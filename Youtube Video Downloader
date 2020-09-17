@@ -1,0 +1,23 @@
+from pytube import YouTube
+
+def Downloader(yt):
+
+   ys = yt.streams.get_lowest_resolution()
+   print("\nDownloading..... ")
+   ys.download('your_location_here')
+   print("\nDownload Complete.\n")
+
+    
+def Mainmenu():
+    link = 'your_youtube_link_here'
+    yt = YouTube(link)
+
+    print("\nThe Video is of :",yt.length,"seconds")
+    
+    ans = input("\nSo the download it?(Y/N)\n")
+    if(ans == "y" or ans == "Y"):
+        Downloader(yt)
+    else:
+        print("\nThank You")
+
+Mainmenu()
