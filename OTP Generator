@@ -1,0 +1,6 @@
+#Python3 Program for the OTP generation.
+
+from random import randint
+
+print("\nYour One-Time Password is : ", end=  " ")
+print(randint(10000000, 99999999), "\n")
