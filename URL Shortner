@@ -1,0 +1,15 @@
+import requests
+
+#The link to the associated API Documentation is : https://cutt.ly/cuttly-api
+
+URL = "your_url_here"
+api_key = "your_API_key_here"
+
+api_url = f"https://cutt.ly/api/api.php?key={api_key}&short={URL}&name=uniquename"
+
+data = requests.get(api_url).json()["url"]
+if data['status'] == 7:
+    shortened_url = data["shortLink"]
+    print(shortened_url)
+else:
+    print("\nError Occurred..",data)
