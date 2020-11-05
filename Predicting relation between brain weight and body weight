@@ -1,0 +1,38 @@
+#Python3 Program for Multiple Linear Regression.
+
+import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+from sklearn.linear_model import LinearRegression
+from sklearn.metrics import r2_score
+from sklearn.model_selection import train_test_split
+
+#Importing the dataset. #You can download the dataset from this URL: 'https://github.com/chiru-20/chiru_20/blob/master/c2.csv'
+dataset = pd.read_csv('your_dataset_loc_here.csv')
+
+X = dataset.iloc[:, :-1].values
+Y = dataset.iloc[:, -1].values
+
+#Splitting the dataset into Training set and Test set.
+
+X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size = 0.2, random_state = 4)
+
+#Training the MLR model on training set.
+
+regressor = LinearRegression()
+regressor.fit(X_train, Y_train)
+
+Y_pred = regressor.predict(X_test)
+
+#Predicting the value.
+
+print("Left ones are predicted Values and right ones are real ones.\n")
+print(np.concatenate((Y_pred.reshape(len(Y_pred), 1), Y_test.reshape(len(Y_test), 1)), axis = 1))
+print("\n")
+
+#Evaluating the model.
+#the closer the value of r^2 to one better is the model.
+
+print("\nThe value of R^2 of MLR on given dataset is : ", end = "")
+print(r2_score(Y_test, Y_pred))
+print("\n")
