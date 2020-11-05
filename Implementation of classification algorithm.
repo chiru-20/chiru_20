@@ -5,13 +5,15 @@ from sklearn.metrics import accuracy_score, confusion_matrix
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 
+#Importing the datset. You can download the dataset by visting this website: 'https://github.com/chiru-20/chiru_20/blob/master/c1.csv'
+
 dataset = pd.read_csv('C:/Users/143870/Downloads/c1.csv')
 
 X = dataset.iloc[:, :-1].values
 Y = dataset.iloc[:, -1].values
 Y = Y.reshape(len(Y), 1)
 
-X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size = 0.2, random_state = 0)
+X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size = 0.2, random_state = 3)
 
 sc = StandardScaler()
 X_train = sc.fit_transform(X_train)
