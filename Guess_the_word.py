@@ -1,7 +1,7 @@
 import random
 
 # List of words for the game
-word_list = ["python", "java", "javascript", "ruby", "php", "html", "css", "csharp"]
+word_list = ["python", "java", "javascript", "ruby", "php", "html", "css", "csharp", "angular", "golang", "c", "dotnet", "perl", "rust", "scala", "dart", "fortran", "cobol", "haskell"]
 
 # Function to choose a random word from the list
 def choose_random_word(word_list):
@@ -39,6 +39,8 @@ def word_guessing_game():
                 break
         else:
             attempts -= 1
+            if attempts < 3:
+                print(f"It is a name of a programming language")
             print(f"Wrong guess. You have {attempts} attempts remaining.")
 
     if attempts == 0:
